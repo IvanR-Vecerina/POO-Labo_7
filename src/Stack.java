@@ -26,7 +26,7 @@ public class Stack<T> {
         this.height   = this.previous.height + 1;
     }
 
-    public T pop(T val){
+    public T pop(){
         if (this.previous == null) {
             throw new EmptyStackException();
         }
@@ -42,6 +42,7 @@ public class Stack<T> {
 
 //    public T[] state(){
 //        T[] t = (T[]) new Object[this.height];
+//
 //
 //
 //    }
