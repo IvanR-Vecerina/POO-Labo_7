@@ -5,19 +5,23 @@ public class Stack<T> {
     private T        value;
     private int      height;
 
-    Stack() {
+    public Stack() {
         this.height = 0;
-    };
-
-    Stack(T val) {
-        this.value  = val;
-        this.height = 1;
     }
 
-    Stack(Stack<T> prev, T val){
+    public Stack(T val) {
+        this.value    = val;
+        this.height   = 1;
+    }
+
+    public Stack(Stack<T> prev, T val){
         this.previous = prev;
         this.value    = val;
-        this.height   = this.previous.height + 1;
+        if (this.previous != null) {
+            this.height = this.previous.height + 1;
+        } else {
+            this.height = 1;
+        }
     }
 
     public T getValue() {
@@ -25,6 +29,7 @@ public class Stack<T> {
     }
 
     public void push(T val){
+
         this.previous = new Stack<T>(this.previous, this.value);
         this.value    = val;
         this.height   = this.previous.height + 1;
@@ -77,6 +82,6 @@ public class Stack<T> {
         }
         s += "]";
 
-        return null;
+        return s;
     }
 }
