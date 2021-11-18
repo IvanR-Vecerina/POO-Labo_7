@@ -20,6 +20,10 @@ public class Stack<T> {
         this.height   = this.previous.height + 1;
     }
 
+    public T getValue() {
+        return this.value;
+    }
+
     public void push(T val){
         this.previous = new Stack<T>(this.previous, this.value);
         this.value    = val;
@@ -40,10 +44,39 @@ public class Stack<T> {
         return poppedVal;
     }
 
-//    public T[] state(){
-//        T[] t = (T[]) new Object[this.height];
-//
-//
-//
-//    }
+    public boolean hasPrevious(){
+        return !(this.previous == null);
+    }
+
+    public Stack<T> getPrevious(){
+        return this.previous;
+    }
+
+    public T[] state(){
+        T[] t = (T[]) new Object[this.height];
+
+        StackIterator<T> it = new StackIterator<T>(this);
+
+        for (int i = 0; i < this.height; i++){
+            t[it.getValue()] = it.getElementValue();
+            it.next();
+        }
+
+        return t;
+    }
+
+    @Override
+    public String toString() {
+        String s = "[ ";
+
+        StackIterator<T> it = new StackIterator<T>(this);
+
+        for (int i = 0; i < this.height; i++){
+            s += "<" + it.getElementValue().toString() + "> ";
+            it.next();
+        }
+        s += "]";
+
+        return null;
+    }
 }
