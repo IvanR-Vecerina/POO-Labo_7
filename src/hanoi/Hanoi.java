@@ -63,6 +63,11 @@ public class Hanoi {
 
     public int[][] status(){
         int[][] tmp = new int[3][];
+
+        tmp[0] = new int[aiguille1.toArray().length];
+        tmp[1] = new int[aiguille2.toArray().length];
+        tmp[2] = new int[aiguille3.toArray().length];
+
         Object[] one = aiguille1.toArray(),
                  two = aiguille2.toArray(),
                  three = aiguille3.toArray();
