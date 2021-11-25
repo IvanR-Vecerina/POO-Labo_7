@@ -1,69 +1,48 @@
 import java.util.EmptyStackException;
 
 public class Stack<T> {
-    private Stack<T> previous;
-    private T        value;
+    private Element<T> first;
     private int      height;
 
     public Stack() {
+        this.first = null;
         this.height = 0;
     }
 
     public Stack(T val) {
-        this.value    = val;
+        this.first    = new Element<T>(val);
         this.height   = 1;
     }
 
-    public Stack(Stack<T> prev, T val){
-        this.previous = prev;
-        this.value    = val;
-        if (this.previous != null) {
-            this.height = this.previous.height + 1;
-        } else {
-            this.height = 1;
-        }
-    }
-
-    public T getValue() {
-        return this.value;
+    public Element<T> getFirst() {
+        return first;
     }
 
     public void push(T val){
-
-        this.previous = new Stack<T>(this.previous, this.value);
-        this.value    = val;
-        this.height   = this.previous.height + 1;
+        this.first = new Element<T>(val, this.first);
+        ++this.height;
     }
 
     public T pop(){
-        if (this.previous == null) {
+        if (this.first == null) {
             throw new EmptyStackException();
         }
 
-        T poppedVal = this.value;
+        T poppedVal = this.first.getValue();
 
-        this.previous = this.previous.previous;
-        this.value    = this.previous.value;
-        this.height   = this.previous.height;
+        this.first = this.first.getPrevious();
+        --this.height;
 
         return poppedVal;
     }
 
-    public boolean hasPrevious(){
-        return !(this.previous == null);
-    }
+    public Object[] state(){
+        Object[] t = new Object[this.height];
 
-    public Stack<T> getPrevious(){
-        return this.previous;
-    }
-
-    public T[] state(){
-        T[] t = (T[]) new Object[this.height];
-
-        StackIterator<T> it = new StackIterator<T>(this);
+        ElementIterator<T> it = new ElementIterator<T>(this);
 
         for (int i = 0; i < this.height; i++){
-            t[it.getValue()] = it.getElementValue();
+            t[i] = it.getElementValue();
             it.next();
         }
 
@@ -74,7 +53,7 @@ public class Stack<T> {
     public String toString() {
         String s = "[ ";
 
-        StackIterator<T> it = new StackIterator<T>(this);
+        ElementIterator<T> it = new ElementIterator<T>(this);
 
         for (int i = 0; i < this.height; i++){
             s += "<" + it.getElementValue().toString() + "> ";
