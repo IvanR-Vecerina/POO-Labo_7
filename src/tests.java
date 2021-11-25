@@ -1,3 +1,7 @@
+import util.*;
+import hanoi.*;
+
+
 public class tests {
 
     public static void main(String[] args) {
@@ -11,7 +15,7 @@ public class tests {
 //        Integer i4 = 2;
 //        Integer i5 = 1;
 //
-//        Stack<Integer> stack = new Stack<Integer>();
+//        util.Stack<Integer> stack = new util.Stack<Integer>();
 //        System.out.println(stack);
 //
 //        stack.push(i2);

@@ -1,3 +1,8 @@
+package util;
+
+import util.Element;
+import util.Stack;
+
 public class ElementIterator<T> {
     private Element<T> node;
 

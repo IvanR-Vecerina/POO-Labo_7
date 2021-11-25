@@ -1,3 +1,5 @@
+package util;
+
 import java.util.EmptyStackException;
 
 public class Stack<T> {
@@ -10,7 +12,7 @@ public class Stack<T> {
     }
 
     public Stack(T val) {
-        this.first    = new Element<T>(val);
+        this.first    = new Element<>(val);
         this.height   = 1;
     }
 
@@ -19,7 +21,7 @@ public class Stack<T> {
     }
 
     public void push(T val){
-        this.first = new Element<T>(val, this.first);
+        this.first = new Element<>(val, this.first);
         ++this.height;
     }
 
@@ -39,7 +41,7 @@ public class Stack<T> {
     public Object[] state(){
         Object[] t = new Object[this.height];
 
-        ElementIterator<T> it = new ElementIterator<T>(this);
+        ElementIterator<T> it = new ElementIterator<>(this);
 
         for (int i = 0; i < this.height; i++){
             t[i] = it.getElementValue();
@@ -53,7 +55,7 @@ public class Stack<T> {
     public String toString() {
         String s = "[ ";
 
-        ElementIterator<T> it = new ElementIterator<T>(this);
+        ElementIterator<T> it = new ElementIterator<>(this);
 
         for (int i = 0; i < this.height; i++){
             s += "<" + it.getElementValue().toString() + "> ";
