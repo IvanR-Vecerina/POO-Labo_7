@@ -1,13 +1,14 @@
 import util.*;
 import hanoi.*;
+import hanoi.gui.*;
 
 
 public class tests {
 
     public static void main(String[] args) {
-
-        Hanoi n = new Hanoi(4);
-        n.solve();
+        HanoiDisplayer h = new HanoiDisplayer();
+        JHanoi n = new JHanoi();
+        //n.solve();
 
 
 //        Integer i1 = 5;

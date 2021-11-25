@@ -6,13 +6,22 @@ public class Hanoi {
     Stack<Integer> aiguille1 = new Stack<>();
     Stack<Integer> aiguille2 = new Stack<>();
     Stack<Integer> aiguille3 = new Stack<>();
+    HanoiDisplayer display = new HanoiDisplayer();
     int nbDisques;
     int nbCoups;
-    public Hanoi(int nbDisques) {
+    boolean finished;
+
+    public Hanoi(int nbDisques){
         this.nbDisques = nbDisques;
+        finished = true;
         for(int i = this.nbDisques; i > 0; --i){
             aiguille1.push(i);
         }
+    }
+
+    public Hanoi(int nbDisques, HanoiDisplayer display) {
+        this(nbDisques);
+        this.display = display;
     }
 
     private void resolution(int n, Stack<Integer> from_rod, Stack<Integer> to_rod, Stack<Integer> aux_rod){
@@ -21,30 +30,57 @@ public class Hanoi {
         {
             tmp = from_rod.pop();
             to_rod.push(tmp);
-            System.out.println("--Turn " + nbCoups++ + ":\n" + this + "\n");
+            nbCoups++;
+            display.display(this);
 
             return;
         }
         resolution(n - 1, from_rod, aux_rod, to_rod);
+
         tmp = from_rod.pop();
         to_rod.push(tmp);
-        System.out.println("--Turn " + nbCoups++ + ":\n" + this + "\n");
-
-        /*System.out.println("Aiguille 1: " + aiguille1.toString());
-        System.out.println("Aiguille 2: " + aiguille2.toString());
-        System.out.println("Aiguille 3: " + aiguille3.toString());*/
-
-
+        nbCoups++;
+        display.display(this);
 
         resolution(n - 1, aux_rod, to_rod, from_rod);
     }
 
     public void solve(){
+        finished = false;
         nbCoups = 0;
-        System.out.println("--Turn " + nbCoups++ + ":\n" + this + "\n");
+        display.display(this);
         resolution(nbDisques, aiguille1, aiguille3, aiguille2);
+        finished = true;
     }
 
+    public boolean finished(){
+        return finished;
+    }
+
+    public int turn(){
+        return nbCoups;
+    }
+
+    public int[][] status(){
+        int[][] tmp = new int[3][];
+        Object[] one = aiguille1.toArray(),
+                 two = aiguille2.toArray(),
+                 three = aiguille3.toArray();
+
+        for(int i = 0; i < one.length; ++i){
+            tmp[0][i] = (int)one[i];
+        }
+        for(int i = 0; i < two.length; ++i){
+            tmp[1][i] = (int)two[i];
+        }
+        for(int i = 0; i < three.length; ++i){
+            tmp[2][i] = (int)three[i];
+        }
+
+        return tmp;
+    }
+
+    @Override
     public String toString(){
         return "Aiguille 1: " + aiguille1.toString() + "\nAiguille 2: " + aiguille2.toString() + "\nAiguille 3: " + aiguille3.toString();
     }
