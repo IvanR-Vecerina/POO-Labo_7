@@ -38,7 +38,7 @@ public class Stack<T> {
         return poppedVal;
     }
 
-    public Object[] state(){
+    public Object[] toArray(){
         Object[] t = new Object[this.height];
 
         ElementIterator<T> it = new ElementIterator<>(this);

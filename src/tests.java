@@ -9,6 +9,7 @@ public class tests {
         Hanoi n = new Hanoi(4);
         n.solve();
 
+
 //        Integer i1 = 5;
 //        Integer i2 = 4;
 //        Integer i3 = 3;
