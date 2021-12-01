@@ -21,7 +21,7 @@ public class Hanoi {
     boolean finished;
 
     /**
-     *
+     * Constructeur
      *
      * @param nbDisques
      */
