@@ -32,7 +32,11 @@ public class ElementIterator<T> {
      * Change l'élément référencé par l'itérateur par l'élément précédent
      */
     public void next() {
-        this.node = this.node.getPrevious();
+        if (this.hasNext()){
+            this.node = this.node.getPrevious();
+        } else {
+            throw new RuntimeException("EXCEPTION: You cannot get next element if it doesn't exist!");
+        }
     }
 
     /**
