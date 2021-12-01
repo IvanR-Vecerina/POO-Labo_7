@@ -1,8 +1,11 @@
 package util;
 
-import util.Element;
-import util.Stack;
-
+/**
+ * Classe ElementIterator,
+ *
+ * @author Ivan
+ * @author Thibault Seem
+ */
 public class ElementIterator<T> {
     private Element<T> node;
 

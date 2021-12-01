@@ -2,6 +2,15 @@ package hanoi;
 
 import util.Stack;
 
+
+/**
+ * Classe Hanoi. Cette classe permet de résoudre un problème de tours de Hanoi à 3 tours. La résolution est effectuée à
+ * l'aide de l'algorithme récursif. Le nombre de disque est décidé à la création de l'objet Hanoi. Durant la résolution,
+ * l'état des trois tours est affichée après chaque déplacement de disque.
+ *
+ * @author Ivan
+ * @author Thibault Seem
+ */
 public class Hanoi {
     Stack<Integer> aiguille1 = new Stack<>();
     Stack<Integer> aiguille2 = new Stack<>();
@@ -11,6 +20,11 @@ public class Hanoi {
     int nbCoups;
     boolean finished;
 
+    /**
+     *
+     *
+     * @param nbDisques
+     */
     public Hanoi(int nbDisques){
         this.nbDisques = nbDisques;
         finished = true;
