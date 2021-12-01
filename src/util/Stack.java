@@ -6,7 +6,7 @@ import java.util.EmptyStackException;
  * Classe Stack, permettant le stockage de donnée sous forme de LIFO. Permet l'accès à l'élément au sommet de la pile,
  * l'ajout et la suppression d'un élément au sommet de la pile et l'affichage de tous les éléments dans la pile.
  *
- * @author Ivan
+ * @author Ivan Vecerina
  * @author Thibault Seem
  */
 public class Stack<T> {

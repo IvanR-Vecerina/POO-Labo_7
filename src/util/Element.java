@@ -4,7 +4,7 @@ package util;
  * Classe Element, permet le stockage d'un objet quelconque dans une stack. Donne également accès à l'élément
  * le précédant dans la stack.
  *
- * @author Ivan
+ * @author Ivan Vecerina
  * @author Thibault Seem
  */
 public class Element<T> {

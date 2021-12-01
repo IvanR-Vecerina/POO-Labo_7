@@ -8,7 +8,7 @@ import util.Stack;
  * l'aide de l'algorithme récursif. Le nombre de disque est décidé à la création de l'objet Hanoi. Durant la résolution,
  * l'état des trois tours est affichée après chaque déplacement de disque.
  *
- * @author Ivan
+ * @author Ivan Vecerina
  * @author Thibault Seem
  */
 public class Hanoi {
@@ -21,7 +21,7 @@ public class Hanoi {
     boolean finished;
 
     /**
-     * Constructeur
+     * Constructeur utilisé pour résoudre un problème de tours hanoi sans changer le HanoiDisplayer utilisé par défaut
      *
      * @param nbDisques
      */
