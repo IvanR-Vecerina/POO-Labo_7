@@ -21,9 +21,10 @@ public class Hanoi {
     boolean finished;
 
     /**
-     * Constructeur utilisé pour résoudre un problème de tours hanoi sans changer le HanoiDisplayer utilisé par défaut
+     * Constructeur utilisé lors d'une résolution demandant un affichage sur la console. Ne change par le HanoiDisplayer
+     * déclaré par défaut
      *
-     * @param nbDisques
+     * @param nbDisques Nombre de disque utilisé pour résoudre les tours de hanoi
      */
     public Hanoi(int nbDisques){
         this.nbDisques = nbDisques;
@@ -33,11 +34,25 @@ public class Hanoi {
         }
     }
 
+    /**
+     * Constructeur utilisé par JHanoi pour l'interface graphique. Permet de changer le HanoiDisplayer par défaut
+     *
+     * @param nbDisques Nombre de disque utilisé pour résoudre les tours de hanoi
+     * @param display Nouveau HanoiDisplayer à utilisé à la place de celui déclaré par défaut
+     */
     public Hanoi(int nbDisques, HanoiDisplayer display) {
         this(nbDisques);
         this.display = display;
     }
 
+    /**
+     * Algorithme de résolution récursif des tours de hanoi. Il s'agit d'un algorithme repris sur internet.
+     *
+     * @param n Nombre de disque sur la tour from_rod
+     * @param from_rod Tour d'où on retire un disque
+     * @param to_rod Tour où on va poser le disque
+     * @param aux_rod Tour dont les disques ne sont pas bougé
+     */
     private void resolution(int n, Stack<Integer> from_rod, Stack<Integer> to_rod, Stack<Integer> aux_rod){
         Integer tmp;
         if (n == 1)
@@ -59,6 +74,9 @@ public class Hanoi {
         resolution(n - 1, aux_rod, to_rod, from_rod);
     }
 
+    /**
+     * Méthode permettant de démarrer la résolution des tours de hanoi
+     */
     public void solve(){
         finished = false;
         nbCoups = 0;
@@ -67,14 +85,31 @@ public class Hanoi {
         finished = true;
     }
 
+    /**
+     * Méthode permettant de tester si on a finit de résoudre les tours de hanoi
+     *
+     * @return Retourne true si la résolution est finie et false si la résolution est toujours en cours ou
+     * n'a pas commencé
+     */
     public boolean finished(){
         return finished;
     }
 
+    /**
+     * Méthode pour connaître le nombre de déplacement effectué depuis le lancement de la résolution
+     *
+     * @return Nombre de déplacement effectués
+     */
     public int turn(){
         return nbCoups;
     }
 
+    /**
+     * Méthode utilisée pour obtenir un tableau à deux dimensions représentant l'état actuel des 3 tours de hanoi
+     *
+     * @return Retourne un tableau à 2 dimension contenant l'état des 3 tours. Le tableau sera donc toujours de taille
+     * int[3][*], le '*' dépendant du nombre de disque sur la tour.
+     */
     public int[][] status(){
         int[][] tmp = new int[3][];
 
@@ -99,6 +134,11 @@ public class Hanoi {
         return tmp;
     }
 
+    /**
+     * Méthode permettant d'obtenir un String représentant les 3  et leurs états actuel sur 3 lignes différentes
+     *
+     * @return Retourne un String contenant l'état des 3 tours.
+     */
     @Override
     public String toString(){
         return "Aiguille 1: " + aiguille1.toString() + "\nAiguille 2: " + aiguille2.toString() + "\nAiguille 3: " + aiguille3.toString();
