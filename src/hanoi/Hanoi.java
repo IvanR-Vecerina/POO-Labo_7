@@ -48,7 +48,7 @@ public class Hanoi {
     /**
      * Algorithme de résolution récursif des tours de hanoi. Il s'agit d'un algorithme repris sur internet.
      *
-     * @param n Nombre de disque sur la tour from_rod
+     * @param n Numéro du disque à bouger (1 = plus petit disque)
      * @param from_rod Tour d'où on retire un disque
      * @param to_rod Tour où on va poser le disque
      * @param aux_rod Tour dont les disques ne sont pas bougé
