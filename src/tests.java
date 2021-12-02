@@ -6,7 +6,7 @@ import java.util.EmptyStackException;
 
 public class tests {
     public static void main(String[] args) {
-        /*if(args.length == 1){
+        if(args.length == 1){
             try {
                 int nbDisques = Integer.parseInt(args[0]);
                 Hanoi n = new Hanoi(nbDisques);
@@ -18,9 +18,9 @@ public class tests {
         }else{
             HanoiDisplayer h = new HanoiDisplayer();
             JHanoi n = new JHanoi();
-        }*/
+        }
 
-        testStack();
+        //testStack();
 
     }
 
