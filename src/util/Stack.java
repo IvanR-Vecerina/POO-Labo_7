@@ -55,7 +55,7 @@ public class Stack<T> {
      *
      * @return Retourne la valeur retirée du sommet de la pile
      */
-    public T pop(){
+    public T pop() throws EmptyStackException{
         if (this.first == null) {
             throw new EmptyStackException();
         }
